@@ -11,44 +11,37 @@ Apple eist een privacy-URL en een support-URL bij het inzenden van de app. Dat z
 
 ## Publiceren
 
-Elke push naar `main` zet de site live. Dat regelt `.github/workflows/deploy.yml`: die
-logt in met FTPS en zet alleen de gewijzigde bestanden over. Op de host zelf hoeft niets
-te draaien.
+**GitHub is de bron, Plesk haalt op.** Bij elke push naar `main` roept GitHub een
+webhook van Plesk aan; Plesk doet een `git pull` en zet de bestanden in de map van het
+subdomein. Er staan nergens FTP-gegevens opgeslagen.
 
-### Eenmalig instellen
+Publiceren is dus:
 
-1. **Subdomein aanmaken** in het configuratiescherm van de host:
-   `netwerk.klakkeloos.com`. Noteer welke map daarbij hoort — bij DirectAdmin is dat
-   meestal `domains/klakkeloos.com/public_html/netwerk/`.
-2. **Certificaat aanzetten** voor dat subdomein (Let's Encrypt, staat in hetzelfde
-   paneel). Apple accepteert alleen `https://`-adressen.
-3. **Repo op GitHub zetten** en deze map erin pushen.
-4. **Vier geheimen klaarzetten** onder Settings → Secrets and variables → Actions →
-   *New repository secret*:
+```
+git add -A && git commit -m "…" && git push
+```
 
-   | Naam | Waarde |
-   |---|---|
-   | `FTP_HOST` | het FTP-adres van de host, bijv. `ftp.klakkeloos.com` |
-   | `FTP_USER` | de FTP-gebruikersnaam |
-   | `FTP_PASSWORD` | het FTP-wachtwoord |
-   | `FTP_SERVER_DIR` | de map uit stap 1, **met een schuine streep aan het eind** |
+Het instellen staat stap voor stap in `../cowork/02-subdomein-en-publiceren.md`. Kort:
 
-5. **Eén keer met de hand starten** via het tabblad Actions → *Publiceer naar
-   netwerk.klakkeloos.com* → Run workflow. Zie je groen, dan staat de site erop.
+1. Subdomein `netwerk.klakkeloos.com` aanmaken in Plesk, met een Let's
+   Encrypt-certificaat (Apple accepteert geen `http://`).
+2. Bij dat subdomein → **Git** → **Extern repository**, met de HTTPS-URL van de
+   GitHub-repo.
+3. Implementatiemodus op **automatisch**, implementatiemap op de documentmap van het
+   subdomein.
+4. De webhook-URL die Plesk toont plakken in GitHub → Settings → Webhooks.
 
-### Als het misgaat
+## Waarom geen GitHub Action
 
-- **Time-out of "530 Login incorrect"** — controleer of het FTP-adres, de gebruikersnaam
-  en het wachtwoord kloppen. Sommige hosts willen de volledige gebruikersnaam
-  (`gebruiker@klakkeloos.com`).
-- **De bestanden komen op de verkeerde plek terecht** — `FTP_SERVER_DIR` klopt niet.
-  Log één keer met een FTP-programma in en kijk in welke map `index.html` hoort te staan.
-- **"FTPS not supported"** — zet `protocol: ftps` in het workflow-bestand om naar `ftp`.
-  Dan gaat het wachtwoord onversleuteld over de lijn; vraag de host liever eerst of FTPS
-  aangezet kan worden.
+Die stond hier eerst wel (uploaden via FTPS), maar Plesk kan het zelf ophalen. Dat is
+minder werk en er hoeft geen wachtwoord in GitHub te staan. Draait er ooit een host
+zónder Git-ondersteuning, dan is de FTP-route alsnog een prima uitwijk.
 
-## Wat je nog kunt aanpassen
+## Let op bij het bewerken
 
+- Plesk zet de **hele** inhoud van de repo in de webmap. Dit bestand is straks dus ook te
+  bekijken op `netwerk.klakkeloos.com/README.md`. Onschuldig, maar zet er niets in wat
+  niet openbaar mag.
 - Het contactadres staat op vier plekken: `privacy.html`, `privacy-en.html`,
   `support.html`, `support-en.html`. Nu overal `bvangogh@mac.com`.
 - Zodra de app in de winkel staat: een downloadknop op de startpagina, met de echte
