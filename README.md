@@ -43,6 +43,6 @@ zónder Git-ondersteuning, dan is de FTP-route alsnog een prima uitwijk.
   bekijken op `netwerk.klakkeloos.com/README.md`. Onschuldig, maar zet er niets in wat
   niet openbaar mag.
 - Het contactadres staat op vier plekken: `privacy.html`, `privacy-en.html`,
-  `support.html`, `support-en.html`. Nu overal `bvangogh@mac.com`.
+  `support.html`, `support-en.html`. Nu overal `netwerk@klakkeloos.com`.
 - Zodra de app in de winkel staat: een downloadknop op de startpagina, met de echte
   App Store-link.
