@@ -65,6 +65,12 @@ const ENDPOINT = 'https://VUL-HIER-HET-ENDPOINT-IN/api/contact';
     };
 
     submitBtn.disabled = true;
+
+    // Alleen een melding die de server zélf teruggeeft is bruikbaar voor de bezoeker.
+    // Gaat de verbinding mis, dan komt er iets als "Load failed" uit de browser rollen —
+    // dat zegt niemand iets, dus daar tonen we onze eigen zin voor.
+    let serverMelding = '';
+
     try {
       const res = await fetch(ENDPOINT, {
         method: 'POST',
@@ -79,10 +85,11 @@ const ENDPOINT = 'https://VUL-HIER-HET-ENDPOINT-IN/api/contact';
         newSum();
         successMsg.textContent = t.msgSuccess;
       } else {
-        throw new Error(json.error || t.msgError);
+        serverMelding = json.error || '';
+        throw new Error('verzenden mislukt');
       }
     } catch (err) {
-      errorMsg.textContent = err.message || t.msgError;
+      errorMsg.textContent = serverMelding || t.msgError;
     } finally {
       submitBtn.disabled = false;
     }
