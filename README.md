@@ -1,8 +1,8 @@
 # netwerk.klakkeloos.com
 
 De productpagina van Netwerk: startpagina, privacybeleid en supportpagina, in het
-Nederlands en het Engels. Statisch — alleen HTML, één stylesheet en een favicon. Geen
-scripts, geen cookies, geen trackers (dus ook geen cookiemelding nodig).
+Nederlands en het Engels. Statisch — HTML, één stylesheet, een favicon en één
+script voor het contactformulier. Geen trackers, geen cookies, geen cookiemelding nodig.
 
 Apple eist een privacy-URL en een support-URL bij het inzenden van de app. Dat zijn:
 

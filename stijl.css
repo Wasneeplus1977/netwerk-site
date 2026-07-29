@@ -83,3 +83,81 @@ footer {
   text-align: center;
 }
 footer a { border: 0; }
+
+/* --- Contactformulier ------------------------------------------------- */
+
+.contact-form { margin: 32px 0 8px; }
+
+.field { margin-bottom: 20px; }
+
+.field label {
+  display: block;
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  font: inherit;
+  color: var(--text);
+  background: var(--card);
+  border: 1px solid var(--separator);
+  border-radius: 6px;
+  padding: 10px 12px;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.field select { background-image: none; }
+
+.field textarea { resize: vertical; min-height: 140px; line-height: 1.5; }
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: -1px;
+  border-color: transparent;
+}
+
+/* De rekensom: label en invoer naast elkaar, invoer klein. */
+.captcha-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.captcha-row span { font-size: 14px; color: var(--text-secondary); }
+.captcha-row input { width: 5em; }
+
+.contact-form button {
+  font: inherit;
+  font-weight: 600;
+  color: var(--page);
+  background: var(--accent);
+  border: 0;
+  border-radius: 6px;
+  padding: 12px 24px;
+  cursor: pointer;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+.contact-form button:hover { opacity: 0.92; }
+.contact-form button:active { transform: scale(0.98); }
+.contact-form button[disabled] { opacity: 0.5; cursor: default; transform: none; }
+
+/* Meldingen. Leeg = onzichtbaar, zodat er geen lege blokken staan. */
+#form-success:not(:empty),
+#form-error:not(:empty) {
+  border-radius: 6px;
+  padding: 12px 16px;
+  margin-bottom: 20px;
+  font-size: 15px;
+}
+#form-success:not(:empty) { background: var(--accent-wash); color: var(--text); }
+#form-error:not(:empty)   { background: var(--block);       color: var(--text); }
+
+/* Zonder JavaScript valt er niets te versturen; zeg dat dan ook. */
+.no-js-note { font-size: 14px; color: var(--text-tertiary); }
