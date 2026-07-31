@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Support — Netwerk</title>
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="stijl.css?v=2">
+<link rel="stylesheet" href="stijl.css?v=3">
 </head>
 <body>
 <main>
@@ -17,57 +17,13 @@
 
 <h2 id="contact">Stuur een bericht</h2>
 
-<form class="contact-form" id="contact-form" novalidate
-      data-msg-captcha-label="Menselijkheidscheck: {a} + {b} ="
-      data-msg-captcha-wrong="De uitkomst klopt niet. Probeer het nog eens."
-      data-msg-wait="Wacht nog {n} seconden voor je opnieuw verstuurt."
-      data-msg-success="Bedankt, je bericht is verstuurd. Ik lees mee en antwoord meestal binnen een paar dagen."
-      data-msg-error="Er ging iets mis. Probeer het later nog eens.">
+<p>Het contactformulier staat op <strong>damonia.com</strong>, de plek waar alle
+berichten over mijn apps binnenkomen. Je gaat daarvoor naar een andere pagina.</p>
 
-  <!-- Onzichtbaar voor mensen; bots vullen het wel in. -->
-  <input type="text" name="_gotcha" style="display:none" tabindex="-1" aria-hidden="true" autocomplete="off">
+<p class="contact-link"><a href="https://www.damonia.com/contact.html">Naar het contactformulier</a></p>
 
-  <div class="field">
-    <label for="name">Je naam</label>
-    <input type="text" id="name" name="name" autocomplete="name" required>
-  </div>
-
-  <div class="field">
-    <label for="email">Je e-mailadres</label>
-    <input type="email" id="email" name="email" autocomplete="email" required>
-  </div>
-
-  <div class="field">
-    <label for="subject">Waar gaat het over?</label>
-    <select id="subject" name="subject" required>
-      <option value="" disabled selected></option>
-      <option value="vraag">Een vraag over de app</option>
-      <option value="probleem">Iets werkt niet</option>
-      <option value="idee">Een idee of suggestie</option>
-      <option value="anders">Iets anders</option>
-    </select>
-  </div>
-
-  <div class="field">
-    <label for="message">Je bericht</label>
-    <textarea id="message" name="message" rows="6" required></textarea>
-  </div>
-
-  <div class="captcha-row">
-    <span id="captcha-question"></span>
-    <input type="number" id="captcha-answer" inputmode="numeric" min="0" max="99" required aria-label="Uitkomst">
-  </div>
-
-  <div id="form-success" role="status" aria-live="polite"></div>
-  <div id="form-error" role="alert" aria-live="assertive"></div>
-
-  <button type="submit">Verstuur</button>
-</form>
-
-<noscript>
-  <p class="no-js-note">Voor dit formulier is JavaScript nodig. Staat dat uit, dan kom ik
-  er niet uit zonder — laat het me dan weten via een ander kanaal.</p>
-</noscript>
+<p class="meta">Wat je daar invult komt in mijn eigen postvak terecht. Zie het
+<a href="privacy.html">privacybeleid</a> voor wat er met je bericht gebeurt.</p>
 
 
 <h2>Veelgestelde vragen</h2>
@@ -115,6 +71,5 @@ minnetje ernaast. Verwijder je de app, dan is de lokale database weg.</p>
 </footer>
 
 </main>
-<script src="contact.js?v=2"></script>
 </body>
 </html>

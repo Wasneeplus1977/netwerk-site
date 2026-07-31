@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Support — Netwerk</title>
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="stijl.css?v=2">
+<link rel="stylesheet" href="stijl.css?v=3">
 </head>
 <body>
 <main>
@@ -17,57 +17,13 @@
 
 <h2 id="contact">Send a message</h2>
 
-<form class="contact-form" id="contact-form" novalidate
-      data-msg-captcha-label="Quick human check: {a} + {b} ="
-      data-msg-captcha-wrong="That answer isn’t right. Please try again."
-      data-msg-wait="Please wait another {n} seconds before sending again."
-      data-msg-success="Thank you, your message has been sent. I read everything and usually reply within a few days."
-      data-msg-error="Something went wrong. Please try again later.">
+<p>The contact form lives on <strong>damonia.com</strong>, where messages about all
+my apps come in. It will take you to another page.</p>
 
-  <!-- Invisible to people; bots fill it in. -->
-  <input type="text" name="_gotcha" style="display:none" tabindex="-1" aria-hidden="true" autocomplete="off">
+<p class="contact-link"><a href="https://www.damonia.com/contact.html">Go to the contact form</a></p>
 
-  <div class="field">
-    <label for="name">Your name</label>
-    <input type="text" id="name" name="name" autocomplete="name" required>
-  </div>
-
-  <div class="field">
-    <label for="email">Your email address</label>
-    <input type="email" id="email" name="email" autocomplete="email" required>
-  </div>
-
-  <div class="field">
-    <label for="subject">What is it about?</label>
-    <select id="subject" name="subject" required>
-      <option value="" disabled selected></option>
-      <option value="question">A question about the app</option>
-      <option value="problem">Something isn’t working</option>
-      <option value="idea">An idea or suggestion</option>
-      <option value="other">Something else</option>
-    </select>
-  </div>
-
-  <div class="field">
-    <label for="message">Your message</label>
-    <textarea id="message" name="message" rows="6" required></textarea>
-  </div>
-
-  <div class="captcha-row">
-    <span id="captcha-question"></span>
-    <input type="number" id="captcha-answer" inputmode="numeric" min="0" max="99" required aria-label="Answer">
-  </div>
-
-  <div id="form-success" role="status" aria-live="polite"></div>
-  <div id="form-error" role="alert" aria-live="assertive"></div>
-
-  <button type="submit">Send</button>
-</form>
-
-<noscript>
-  <p class="no-js-note">This form needs JavaScript. If you have it switched off, there is
-  no way around it here — do let me know through another channel.</p>
-</noscript>
+<p class="meta">Whatever you write there lands in my own mailbox. See the
+<a href="privacy-en.html">privacy policy</a> for what happens to your message.</p>
 
 
 <h2>Frequently asked</h2>
@@ -113,6 +69,5 @@ it. Delete the app and the local database is gone.</p>
 </footer>
 
 </main>
-<script src="contact.js?v=2"></script>
 </body>
 </html>
